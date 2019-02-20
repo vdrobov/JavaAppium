@@ -8,6 +8,7 @@ public class iOSMyListsPageObject extends MyListsPageObject
 {
     static {
         ARTICLE_BY_TITLE_TPL = "xpath://XCUIElementTypeLink[contains(@name,'{TITLE}')]";
+        ARTICLES_LIST = "xpath://XCUIElementTypeCollectionView//XCUIElementTypeLink";
     }
 
     public iOSMyListsPageObject(RemoteWebDriver driver)

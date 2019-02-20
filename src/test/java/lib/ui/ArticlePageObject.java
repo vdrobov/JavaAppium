@@ -178,6 +178,11 @@ abstract public class ArticlePageObject extends MainPageObject{
 
     public void moveToSearchPage()
     {
+        this.waitForElementPresent(
+                SEARCH_MENU_BUTTON,
+                "Cannot find menu search button",
+                5
+        );
         this.waitForElementAndClick(
                 SEARCH_MENU_BUTTON,
                 "Cannot press menu search button",

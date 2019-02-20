@@ -10,6 +10,7 @@ public class MWMyListsPageObject extends MyListsPageObject {
         REMOVE_FROM_SAVED_BUTTON = "xpath://ul[contains(@class, 'page-summary-list')]//*[@title='Stop watching']";
 //        NOT_DELETED_ARTICLE = "xpath://a[href='/wiki/Cyprus']";
         HIDDEN_ELEMENT = "xpath://span[@class='modified-enhancement']";
+        ARTICLES_LIST = "xpath://ul[contains(@class, 'page-summary-list')]";
     }
 
     public MWMyListsPageObject(RemoteWebDriver driver) {

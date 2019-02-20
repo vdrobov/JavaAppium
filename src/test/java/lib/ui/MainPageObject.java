@@ -278,7 +278,7 @@ public class MainPageObject {
         }
     }
 
-    private By getLocatorByString(String locator_with_type)
+    protected By getLocatorByString(String locator_with_type)
     {
         String[] exploded_locator = locator_with_type.split(Pattern.quote(":"), 2);
         String by_type = exploded_locator[0];
@@ -295,11 +295,11 @@ public class MainPageObject {
         }
     }
 
-    public void isJqery()
-    {
-        JavascriptExecutor JSExecutor = (JavascriptExecutor)driver;
-        System.out.println("*************************************************");
-        System.out.println(JSExecutor.executeScript("return jQuery.active"));
-        System.out.println("*************************************************");
-    }
+//    public void isJqery()
+//    {
+//        JavascriptExecutor JSExecutor = (JavascriptExecutor)driver;
+//        System.out.println("*************************************************");
+//        System.out.println(JSExecutor.executeScript("return jQuery.active"));
+//        System.out.println("*************************************************");
+//    }
 }

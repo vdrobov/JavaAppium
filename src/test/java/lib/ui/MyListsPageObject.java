@@ -2,7 +2,12 @@ package lib.ui;
 
 import io.appium.java_client.AppiumDriver;
 import lib.Platform;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
+
+import java.util.LinkedList;
+import java.util.List;
 
 abstract public class MyListsPageObject extends MainPageObject{
 
@@ -10,7 +15,8 @@ abstract public class MyListsPageObject extends MainPageObject{
             FOLDER_BY_NAME_TPL,
             ARTICLE_BY_TITLE_TPL,
             HIDDEN_ELEMENT,
-            REMOVE_FROM_SAVED_BUTTON;
+            REMOVE_FROM_SAVED_BUTTON,
+            ARTICLES_LIST;
 
     /* TEMPLATES METHODS */
     private static String getFolderXpathByName(String name_of_folder)
@@ -108,5 +114,16 @@ abstract public class MyListsPageObject extends MainPageObject{
         }
 
         this.waitForArticleToDisappearByTitle(article_title);
+    }
+
+    public List<String> getArticlesList()
+    {
+        List<String> titles = new LinkedList<>();
+        By by = getLocatorByString(ARTICLES_LIST);
+        List<WebElement> elements = driver.findElements(by);
+        for(WebElement element : elements) {
+            titles.add(element.getAttribute("name"));
+        }
+        return titles;
     }
 }
