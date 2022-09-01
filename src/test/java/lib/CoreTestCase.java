@@ -63,7 +63,7 @@ public class CoreTestCase extends TestCase{
             AppiumDriver driver = (AppiumDriver) this.driver;
             driver.hideKeyboard();
         } else {
-            System.out.println("Method backgroundApp() does nothing for platform " + Platform.getInstance().getPlatformVar());
+            System.out.println("Method hideKeyboard() does nothing for platform " + Platform.getInstance().getPlatformVar());
         }
     }
 
