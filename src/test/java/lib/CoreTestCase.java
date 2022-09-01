@@ -57,6 +57,16 @@ public class CoreTestCase extends TestCase{
         }
     }
 
+    protected void hideKeyboard()
+    {
+        if (driver instanceof AppiumDriver) {
+            AppiumDriver driver = (AppiumDriver) this.driver;
+            driver.hideKeyboard();
+        } else {
+            System.out.println("Method hideKeyboard() does nothing for platform " + Platform.getInstance().getPlatformVar());
+        }
+    }
+
     protected void openWikiWebPageForMobileWeb()
     {
         if (Platform.getInstance().isMW()) {

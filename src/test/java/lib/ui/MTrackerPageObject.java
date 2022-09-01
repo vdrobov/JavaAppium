@@ -11,10 +11,18 @@ abstract public class MTrackerPageObject extends MainPageObject {
             TIME_VALUE,
             DISTANCE_VALUE,
             CURRENT_POSITION_VALUE,
-            START_STOP_TRIP_BUTTON;
+            START_STOP_TRIP_BUTTON,
+            NOTES_VIEW,
+            SAVE_NOTES_BUTTON;
 
     public MTrackerPageObject(RemoteWebDriver driver) {
         super(driver);
+    }
+
+    public WebElement checkDeductionAmountPresent() {
+        return this.waitForElementPresent(
+                DEDUCTION_AMOUNT,
+                "Cannot find Deduction Amount on the screen");
     }
 
     public void validateDriveRecordingScreenElementsPresent() {
@@ -30,13 +38,10 @@ abstract public class MTrackerPageObject extends MainPageObject {
                 "Cannot find Current Position value on the screen");
         this.waitForElementPresent(START_STOP_TRIP_BUTTON,
                 "Cannot find and click Start/Stop button on the screen");
-    }
-
-    public WebElement checkDeductionAmountPresent() {
-        return this.waitForElementPresent(
-                DEDUCTION_AMOUNT,
-                "Cannot find Deduction Amount on the screen",
-                10);
+        this.waitForElementPresent(NOTES_VIEW,
+                "Cannot find Notes View on the screen");
+        this.waitForElementPresent(SAVE_NOTES_BUTTON,
+                "Cannot find Save Notes button on the screen");
     }
 
     public WebElement checkDistanceValuePresent() {
@@ -86,6 +91,33 @@ abstract public class MTrackerPageObject extends MainPageObject {
         float calculatedDeductionValue = (actualDistanceValue * k);
         System.out.println("Calculated Deduction Value = " + calculatedDeductionValue);
         return calculatedDeductionValue;
+    }
+
+    public WebElement enterTheNoteText() {
+        return this.waitForElementAndSendKeys(
+                NOTES_VIEW,
+                "test",
+                "Cannot enter the Note",
+                5);
+    }
+
+    public void clickSaveNotesButton() {
+        this.waitForElementAndClick(SAVE_NOTES_BUTTON,
+                "Cannot find and click Save Notes button on the screen",
+                10);
+    }
+
+    public WebElement checkNoteValuePresent() {
+        return this.waitForElementPresent(NOTES_VIEW,
+                "Cannot find Note Value on the screen",
+                10);
+    }
+
+    public String getNoteFiledValue() {
+        WebElement note_field = checkNoteValuePresent();
+        String note_field_value = note_field.getAttribute("text");
+        System.out.println(note_field_value);
+        return note_field_value;
     }
 }
 

@@ -3,24 +3,10 @@ package tests;
 import lib.CoreTestCase;
 import lib.ui.MTrackerPageObject;
 import lib.ui.factories.MTrackerPageObjectFactory;
+import org.junit.Assert;
 import org.junit.Test;
 
 public class MTrackerTests extends CoreTestCase {
-
-    @Test
-    public void testMTrackerStartValueLessThanStopValue() throws InterruptedException {
-
-        MTrackerPageObject MTrackerPageObject = MTrackerPageObjectFactory.get(driver);
-
-        MTrackerPageObject.validateDriveRecordingScreenElementsPresent();
-        float start_deduction_value = MTrackerPageObject.getDeductionValue();
-        MTrackerPageObject.clickStartStopTripButton();
-        Thread.sleep(5000);
-        MTrackerPageObject.clickStartStopTripButton();
-        float stop_deduction_value = MTrackerPageObject.getDeductionValue();
-
-        assertTrue(start_deduction_value < stop_deduction_value);
-    }
 
     @Test
     public void testMTrackerStartValueLessThanStopValueAfter5MilesPassed() {
@@ -72,6 +58,7 @@ public class MTrackerTests extends CoreTestCase {
         float stop_deduction_value2 = MTrackerPageObject.getDeductionValue();
 
         assertEquals(
+                "Deduction amount is still changing even after click Stop tracker button",
                 stop_deduction_value1,
                 stop_deduction_value2);
     }
@@ -125,5 +112,22 @@ public class MTrackerTests extends CoreTestCase {
                 deduction_amount_before_background,
                 deduction_amount_after_background
         );
+    }
+
+    public void testMTrackerSaveNotes() {
+
+        MTrackerPageObject MTrackerPageObject = MTrackerPageObjectFactory.get(driver);
+
+        MTrackerPageObject.validateDriveRecordingScreenElementsPresent();
+
+        MTrackerPageObject.enterTheNoteText();
+        hideKeyboard();
+        MTrackerPageObject.clickSaveNotesButton();
+        String note_field_value = MTrackerPageObject.getNoteFiledValue();
+
+        Assert.assertEquals(
+                "Note was not saved",
+                note_field_value,
+                "test");
     }
 }
