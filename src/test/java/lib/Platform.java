@@ -62,12 +62,12 @@ public class Platform {
     {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName","Android");
-        capabilities.setCapability("deviceName","and80");
-        capabilities.setCapability("platformVersion","8.0");
+        capabilities.setCapability("deviceName","and228");
+//        capabilities.setCapability("platformVersion","8.0");
         capabilities.setCapability("automationName","Appium");
-        capabilities.setCapability("appPackage","org.wikipedia");
-        capabilities.setCapability("appActivity",".main.MainActivity");
-        capabilities.setCapability("app","/Users/vdrobov/Documents/GitHub/JavaAppiumAutomation/apks/org.wikipedia.apk");
+        capabilities.setCapability("appPackage","com.stride.driverecordingkotlin");
+        capabilities.setCapability("appActivity",".MainActivity");
+        capabilities.setCapability("app","/Users/udrobau/Documents/apks/app-debug.apk");
         //        capabilities.setCapability("orientation","PORTRAIT");
         return capabilities;
     }
