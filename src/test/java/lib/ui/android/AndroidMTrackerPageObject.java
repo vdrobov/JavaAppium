@@ -13,6 +13,8 @@ public class AndroidMTrackerPageObject extends MTrackerPageObject
         DISTANCE_VALUE = "id:com.stride.driverecordingkotlin:id/distance_value";
         CURRENT_POSITION_VALUE = "id:com.stride.driverecordingkotlin:id/current_position_value";
         START_STOP_TRIP_BUTTON = "id:com.stride.driverecordingkotlin:id/trip_button";
+        NOTES_VIEW = "id:com.stride.driverecordingkotlin:id/notes_view";
+        SAVE_NOTES_BUTTON = "id:com.stride.driverecordingkotlin:id/save_button";
     }
 
     public AndroidMTrackerPageObject(RemoteWebDriver driver)
